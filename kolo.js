@@ -1,3 +1,6 @@
+// Import axios
+const axios = require('axios');
+
 const url1 = 'https://kolo-web.cndcorp.net/api/game-batch-claim';
 const token1 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8va29sby13ZWIuY25kY29ycC5uZXQvYXBpL2F1dGgiLCJpYXQiOjE3MjkzMzg0NjUsImV4cCI6MTcyOTQyNDg2NSwibmJmIjoxNzI5MzM4NDY1LCJqdGkiOiJVdVJubXc0U2w1SzJzQ2N2Iiwic3ViIjoiOTY0NDI1OCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJsYW5nIjoiZW4ifQ.J8ZK05IOkYSvgnHXn_05bVXiYkcif-RVx03r3yaznE8';
 
@@ -49,29 +52,19 @@ const body2 = {
 };
 
 function callApi1() {
-  fetch(url1, {
-    method: 'POST',
-    headers: headers1,
-    body: JSON.stringify(body1)
-  })
-  .then(response => response.json())
-  .then(data => console.log('Response from API 1:', data))
-  .catch(error => console.error('Error from API 1:', error));
+  axios.post(url1, body1, { headers: headers1 })
+    .then(response => console.log('Response from API 1:', response.data))
+    .catch(error => console.error('Error from API 1:', error));
 }
 
 function callApi2() {
-  fetch(url2, {
-    method: 'POST',
-    headers: headers2,
-    body: JSON.stringify(body2)
-  })
-  .then(response => response.json())
-  .then(data => console.log('Response from API 2:', data))
-  .catch(error => console.error('Error from API 2:', error));
+  axios.post(url2, body2, { headers: headers2 })
+    .then(response => console.log('Response from API 2:', response.data))
+    .catch(error => console.error('Error from API 2:', error));
 }
 
 // Gọi API 1 mỗi 1 giây
-setInterval(callApi1, 100);
+setInterval(callApi1, 1000);
 
 // Gọi API 2 mỗi 1 giây
-setInterval(callApi2, 100);
+setInterval(callApi2, 1000);
