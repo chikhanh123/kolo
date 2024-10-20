@@ -64,7 +64,7 @@ function callApi2() {
 }
 
 // Gọi API 1 mỗi 1 giây
-setInterval(callApi1, 1000);
+setInterval(callApi1, 10);
 
 // Gọi API 2 mỗi 1 giây
-setInterval(callApi2, 1000);
+setInterval(callApi2, 10);
